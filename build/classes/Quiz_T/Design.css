@@ -1,0 +1,34 @@
+
+.login-btn{
+    -fx-background-color:linear-gradient(to right left, #754E26, #EA6826);
+    -fx-background-radius:5px;
+    -fx-text-fill:#fff;
+    -fx-font-size:14px;
+    -fx-font-family:"Arial";
+    -fx-cursor:hand;
+}
+.login-btn-left{
+    -fx-background-color:linear-gradient(to top left, #754E26, #EA6826);
+    -fx-background-radius:5px;
+    -fx-text-fill:#fff;
+    -fx-font-size:14px;
+    -fx-font-family:"Arial";
+    -fx-cursor:hand;
+}
+.login-btn-right{
+    -fx-background-color:linear-gradient(to top right, #754E26, #EA6826);
+    -fx-background-radius:5px;
+    -fx-text-fill:#fff;
+    -fx-font-size:14px;
+    -fx-font-family:"Arial";
+    -fx-cursor:hand;
+}
+.login-btn:hover{
+    -fx-background-color:linear-gradient(to bottom, #21a7ae,#229c9d);
+}
+.login-btn-left:hover{
+    -fx-background-color:linear-gradient(to bottom, #21a7ae,#229c9d);
+}
+.login-btn-right:hover{
+    -fx-background-color:linear-gradient(to bottom, #21a7ae,#229c9d);
+}

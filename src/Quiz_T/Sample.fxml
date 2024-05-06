@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<fx:root prefHeight="400.0" prefWidth="600.0" type="AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Quiz_T.Controller">
+   <children>
+      <GridPane layoutX="38.0" layoutY="160.0" prefHeight="200.0" prefWidth="600.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="160.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+          <RowConstraints vgrow="SOMETIMES" />
+          <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="Theme1Bt" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="login-btn-right" stylesheets="@Design.css" text="Button">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin></Button>
+            <Button fx:id="Theme2Bt" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="login-btn" stylesheets="@Design.css" text="Button" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin></Button>
+            <Button fx:id="Theme3Bt" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="login-btn-left" stylesheets="@Design.css" text="Button" GridPane.columnIndex="2">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin></Button>
+            <Button fx:id="Theme4Bt" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="login-btn-right" stylesheets="@Design.css" text="Button" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin></Button>
+            <Button fx:id="Theme5Bt" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="login-btn" stylesheets="@Design.css" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin></Button>
+            <Button fx:id="Theme6Bt" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="login-btn-left" stylesheets="@Design.css" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin></Button>
+            <Button fx:id="Theme7Bt" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="login-btn-right" stylesheets="@Design.css" text="Button" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin></Button>
+            <Button fx:id="Theme8Bt" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="login-btn" stylesheets="@Design.css" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin></Button>
+            <Button fx:id="Theme9Bt" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="login-btn-left" stylesheets="@Design.css" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin></Button>
+            <Button fx:id="Theme10Bt" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="login-btn-right" stylesheets="@Design.css" text="Button" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin></Button>
+            <Button fx:id="Theme11Bt" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="login-btn" stylesheets="@Design.css" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin></Button>
+            <Button fx:id="Theme12Bt" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="login-btn-left" stylesheets="@Design.css" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin></Button>
+            <Button fx:id="OkBt" mnemonicParsing="false" text="ok" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin>
+            </Button>
+         </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </GridPane>
+      <ImageView fx:id="VueIv" fitHeight="150.0" fitWidth="570.0" layoutX="7.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+   </children>
+</fx:root>

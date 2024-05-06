@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-radius: 32px; -fx-border-radius: 32px;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Connection.Controller">
+   <children>
+      <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 32px; -fx-border-radius: 32px;">
+         <children>
+            <AnchorPane prefHeight="400.0" prefWidth="300.0" styleClass="right-form" stylesheets="@Design2.css">
+               <children>
+                  <VBox alignment="CENTER" layoutX="19.0" layoutY="26.0" prefHeight="290.0" prefWidth="261.0" spacing="20.0">
+                     <children>
+                        <Label text="User Registration" textFill="#229c9d">
+                           <font>
+                              <Font name="Tahoma Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="username" prefHeight="30.0" prefWidth="220.0" promptText="First Name" styleClass="textfield" stylesheets="@Design2.css" />
+                        <TextField fx:id="username11" prefHeight="30.0" prefWidth="220.0" promptText="Last Name" styleClass="textfield" stylesheets="@Design2.css">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </TextField>
+                        <TextField fx:id="username1" prefHeight="30.0" prefWidth="220.0" promptText="E-mail" styleClass="textfield" stylesheets="@Design2.css" />
+                        <TextField fx:id="username12" prefHeight="30.0" prefWidth="220.0" promptText="Number" styleClass="textfield" stylesheets="@Design2.css" />
+                        <Button fx:id="loginBtn" mnemonicParsing="false" onAction="#loginAdmin" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" stylesheets="@Design2.css" text="Login" />
+                     </children>
+                     <padding>
+                        <Insets left="20.0" right="20.0" />
+                     </padding>
+                  </VBox>
+                  <ImageView fitHeight="60.0" fitWidth="110.0" layoutX="42.0" layoutY="326.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/fond1.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="300.0" prefHeight="400.0" prefWidth="300.0" styleClass="left-form" stylesheets="@Design2.css">
+               <children>
+                  <FontAwesomeIcon fill="WHITE" glyphName="USER" layoutX="99.0" layoutY="221.0" size="8em" />
+                  <Label layoutX="52.0" layoutY="244.0" text="Quiz Managment System" textFill="WHITE">
+                     <font>
+                        <Font name="Tahoma" size="18.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="logout" layoutX="242.0" layoutY="326.0" mnemonicParsing="false" onMouseClicked="#Sample" styleClass="logout-user" stylesheets="@Design2.css">
+                                 <graphic>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="USER_SECRET" selectionFill="#ea6826" size="2em" />
+                                 </graphic>
+                  </Button>
+                  <Button fx:id="logout1" layoutX="242.0" layoutY="46.0" mnemonicParsing="false" onMouseClicked="#Sample2" styleClass="logout-admin" stylesheets="@Design2.css">
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="USER" size="2em" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="close" layoutX="250.0" layoutY="14.0" mnemonicParsing="false" onAction="#close" styleClass="close" stylesheets="@Design2.css" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="14.0">
+                  	 <graphic>
+                        <FontAwesomeIcon glyphName="CLOSE" size="1.2em" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="minimize" layoutX="225.0" layoutY="14.0" mnemonicParsing="false" onAction="#minimize" styleClass="minimize" stylesheets="@Design2.css" AnchorPane.topAnchor="14.0">
+                                 <graphic>
+                                    <FontAwesomeIcon glyphName="MINUS" size="1.2em" text="" />
+                                 </graphic>
+                              </Button>
+                  <Label layoutX="210.0" layoutY="53.0" />
+                  <FontAwesomeIcon fill="#1c9898" glyphName="ARROW_RIGHT" layoutX="220.0" layoutY="66.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </FontAwesomeIcon>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
