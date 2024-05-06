@@ -6,12 +6,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -25,6 +24,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
 public class Controller {
 
@@ -132,55 +132,111 @@ public class Controller {
 
     public void Sample2(MouseEvent event) {
 
-        try {
-        	logout1.getScene().getWindow().hide();
-            Parent root = FXMLLoader.load(getClass().getResource("Sample2.FXML"));
-            Stage stage = new Stage();
-            Scene scene = new Scene(root);
-            
-            root.setOnMousePressed((MouseEvent event1) ->{
-                x = event1.getSceneX();
-                y = event1.getSceneY();
+    	try {
+            // Créer une transition de fondu sortant
+            FadeTransition fadeOut = new FadeTransition(Duration.seconds(1), logout1.getScene().getRoot());
+            fadeOut.setFromValue(1.0);
+            fadeOut.setToValue(0.0);
+            fadeOut.setOnFinished(e -> {
+                try {
+                    // Charger la nouvelle fenêtre
+                    Parent root = FXMLLoader.load(getClass().getResource("Sample2.fxml"));
+                    Stage stage = new Stage();
+                    Scene scene = new Scene(root);
+                    
+                    root.setOnMousePressed((MouseEvent event1) ->{
+                        x = event1.getSceneX();
+                        y = event1.getSceneY();
+                    });
+                    
+                    root.setOnMouseDragged((MouseEvent event1) ->{
+                        stage.setX(event1.getScreenX() - x);
+                        stage.setY(event1.getScreenY() - y);
+                    });
+
+                    stage.initStyle(StageStyle.TRANSPARENT);
+        			scene.setFill(Color.TRANSPARENT);
+        			
+                    stage.setScene(scene);
+
+                    // Créer une transition de fondu entrant pour la nouvelle fenêtre
+                    FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), root);
+                    fadeIn.setFromValue(0.0);
+                    fadeIn.setToValue(1.0);
+                    fadeIn.play();
+        			
+                    // Afficher la nouvelle fenêtre
+                    stage.show();
+
+                    // Fermer la fenêtre actuelle
+                    logout1.getScene().getWindow().hide();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
             });
-            
-            root.setOnMouseDragged((MouseEvent event1) ->{
-                stage.setX(event1.getScreenX() - x);
-                stage.setY(event1.getScreenY() - y);
-            });
-            
-            stage.initStyle(StageStyle.TRANSPARENT);
-			scene.setFill(Color.TRANSPARENT);
-	        
-            stage.setScene(scene);
-            stage.show();
-        } catch(Exception e){e.printStackTrace();}
+            // Démarrer la transition de fondu sortant
+            fadeOut.play();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
     
     public void Sample(MouseEvent event) {
 
-        try {
-        	logout.getScene().getWindow().hide();
-            Parent root = FXMLLoader.load(getClass().getResource("Sample.FXML"));
-            Stage stage = new Stage();
-            Scene scene = new Scene(root);
-            
-            root.setOnMousePressed((MouseEvent event1) ->{
-                x = event1.getSceneX();
-                y = event1.getSceneY();
+    	try {
+            // Créer une transition de fondu sortant
+            FadeTransition fadeOut = new FadeTransition(Duration.seconds(1), logout1.getScene().getRoot());
+            fadeOut.setFromValue(1.0);
+            fadeOut.setToValue(0.0);
+            fadeOut.setOnFinished(e -> {
+                try {
+                    // Charger la nouvelle fenêtre
+                    Parent root = FXMLLoader.load(getClass().getResource("Sample.fxml"));
+                    Stage stage = new Stage();
+                    Scene scene = new Scene(root);
+                    
+                    root.setOnMousePressed((MouseEvent event1) ->{
+                        x = event1.getSceneX();
+                        y = event1.getSceneY();
+                    });
+                    
+                    root.setOnMouseDragged((MouseEvent event1) ->{
+                        stage.setX(event1.getScreenX() - x);
+                        stage.setY(event1.getScreenY() - y);
+        	            
+                        stage.setOpacity(.8);
+                    });
+        	        
+        	        root.setOnMouseReleased((MouseEvent event1) ->{
+        	        	stage.setOpacity(1);
+        	        });
+
+                    stage.initStyle(StageStyle.TRANSPARENT);
+        			scene.setFill(Color.TRANSPARENT);
+        			
+                    stage.setScene(scene);
+
+                    // Créer une transition de fondu entrant pour la nouvelle fenêtre
+                    FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), root);
+                    fadeIn.setFromValue(0.0);
+                    fadeIn.setToValue(1.0);
+                    fadeIn.play();
+        			
+                    // Afficher la nouvelle fenêtre
+                    stage.show();
+
+                    // Fermer la fenêtre actuelle
+                    logout1.getScene().getWindow().hide();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
             });
-            
-            root.setOnMouseDragged((MouseEvent event1) ->{
-                stage.setX(event1.getScreenX() - x);
-                stage.setY(event1.getScreenY() - y);
-            });
-            
-            stage.initStyle(StageStyle.TRANSPARENT);
-			scene.setFill(Color.TRANSPARENT);
-	        
-            stage.setScene(scene);
-            stage.show();
-        } catch(Exception e){e.printStackTrace();}
+            // Démarrer la transition de fondu sortant
+            fadeOut.play();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
     
