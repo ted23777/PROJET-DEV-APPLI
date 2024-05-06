@@ -20,7 +20,7 @@ public class Main extends Application {
 		try {
 			primaryStage.setTitle("SABV");
 			
-			StackPane root = (StackPane)FXMLLoader.load(getClass().getResource("Sample.FXML"));
+			StackPane root = (StackPane)FXMLLoader.load(getClass().getResource("Sample2.FXML"));
 			
 			Scene scene = new Scene(root);
 	        
@@ -44,7 +44,7 @@ public class Main extends Application {
 			primaryStage.initStyle(StageStyle.TRANSPARENT);
 			scene.setFill(Color.TRANSPARENT);
 	        
-			scene.getStylesheets().add(getClass().getResource("Design.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("Design2.css").toExternalForm());
 			
 			primaryStage.setScene(scene);
 			

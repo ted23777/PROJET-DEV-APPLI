@@ -25,15 +25,15 @@
                               <Font name="Tahoma Bold" size="17.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="username" prefHeight="30.0" prefWidth="220.0" promptText="First Name" styleClass="textfield" stylesheets="@Design2.css" />
-                        <TextField fx:id="username11" prefHeight="30.0" prefWidth="220.0" promptText="Last Name" styleClass="textfield" stylesheets="@Design2.css">
+                        <TextField fx:id="username" focusTraversable="false" prefHeight="30.0" prefWidth="220.0" promptText="First Name" styleClass="textfield" stylesheets="@Design2.css" />
+                        <TextField fx:id="username11" focusTraversable="false" prefHeight="30.0" prefWidth="220.0" promptText="Last Name" styleClass="textfield" stylesheets="@Design2.css">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
                         </TextField>
-                        <TextField fx:id="username1" prefHeight="30.0" prefWidth="220.0" promptText="E-mail" styleClass="textfield" stylesheets="@Design2.css" />
-                        <TextField fx:id="username12" prefHeight="30.0" prefWidth="220.0" promptText="Number" styleClass="textfield" stylesheets="@Design2.css" />
-                        <Button fx:id="loginBtn" mnemonicParsing="false" onAction="#loginAdmin" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" stylesheets="@Design2.css" text="Login" />
+                        <TextField fx:id="username1" focusTraversable="false" prefHeight="30.0" prefWidth="220.0" promptText="E-mail" styleClass="textfield" stylesheets="@Design2.css" />
+                        <TextField fx:id="username12" focusTraversable="false" prefHeight="30.0" prefWidth="220.0" promptText="Number" styleClass="textfield" stylesheets="@Design2.css" />
+                        <Button fx:id="loginBtn" mnemonicParsing="false" onAction="#loginAdmin" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" stylesheets="@Design2.css" text="Quiz" />
                      </children>
                      <padding>
                         <Insets left="20.0" right="20.0" />
@@ -48,12 +48,6 @@
             </AnchorPane>
             <AnchorPane layoutX="300.0" prefHeight="400.0" prefWidth="300.0" styleClass="left-form" stylesheets="@Design2.css">
                <children>
-                  <FontAwesomeIcon fill="WHITE" glyphName="USER" layoutX="99.0" layoutY="221.0" size="8em" />
-                  <Label layoutX="52.0" layoutY="244.0" text="Quiz Managment System" textFill="WHITE">
-                     <font>
-                        <Font name="Tahoma" size="18.0" />
-                     </font>
-                  </Label>
                   <Button fx:id="logout" layoutX="242.0" layoutY="326.0" mnemonicParsing="false" onMouseClicked="#Sample" styleClass="logout-user" stylesheets="@Design2.css">
                                  <graphic>
                                     <FontAwesomeIcon fill="WHITE" glyphName="USER_SECRET" selectionFill="#ea6826" size="2em" />
@@ -80,6 +74,11 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </FontAwesomeIcon>
+                  <ImageView fitHeight="260.0" fitWidth="200.0" layoutX="50.0" layoutY="100.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/quiz-removebg-preview.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
          </children>
