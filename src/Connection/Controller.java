@@ -7,6 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javafx.animation.FadeTransition;
+import javafx.animation.KeyFrame;
+import javafx.animation.PauseTransition;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,6 +22,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -55,6 +61,33 @@ public class Controller {
     @FXML
     private Label triangle;
     
+    @FXML
+    private TextField firstNameField;
+    
+    @FXML
+    private TextField lastNameField;
+    
+    @FXML
+    private TextField emailField;
+    
+    @FXML
+    private TextField numberField;
+    
+    @FXML
+    private Button quiz;
+    
+    @FXML
+    private ImageView loadingImageView;
+    
+    // Créer des tooltips pour les champs vides
+    Tooltip firstNameTooltip = new Tooltip("First Name is required");
+    Tooltip lastNameTooltip = new Tooltip("Last Name is required");
+    Tooltip emailTooltip = new Tooltip("Email is required");
+    Tooltip numberTooltip = new Tooltip("Number is required");
+    Tooltip userNameTooltip = new Tooltip("UserName is required");
+    Tooltip wrong = new Tooltip("Wrong Username/Password");
+    Tooltip success = new Tooltip("Information Message");
+    
     // Définir les informations de connexion à la base de données MySQL
     private static final String DB_URL = "jdbc:mysql://localhost:3306/inscriptions";
     private static final String DB_USER = "root";
@@ -62,6 +95,106 @@ public class Controller {
   
     private double x = 0;
     private double y = 0;
+    
+    @FXML
+    public void handle() throws InterruptedException {
+        boolean isValid = true;
+
+        // Vérifier si les champs sont vides et afficher les tooltips appropriés
+        if (firstNameField.getText().isEmpty()) {
+        	firstNameTooltip.setAutoHide(true);
+        	
+        	// Obtention de la position du centre de la fenêtre
+        	Stage stage = (Stage) main_form.getScene().getWindow();
+        	double windowX = stage.getX() - 25 + stage.getWidth() / 2;
+        	double windowY = stage.getY() - 25 + stage.getHeight() / 2;
+
+        	// Afficher le tooltip au centre de la fenêtre
+        	firstNameTooltip.show(firstNameField, windowX, windowY);
+
+        	 // Créer une transition de pause de 5 secondes
+            PauseTransition pause = new PauseTransition(Duration.seconds(3));
+            pause.setOnFinished(event -> firstNameTooltip.hide()); // Masquer le tooltip après la pause
+            pause.play();
+            isValid = false;
+        }else
+
+        if (lastNameField.getText().isEmpty()) {
+        	lastNameTooltip.setAutoHide(true);
+        	
+        	// Obtention de la position du centre de la fenêtre
+        	Stage stage = (Stage) main_form.getScene().getWindow();
+        	double windowX = stage.getX() - 25 + stage.getWidth() / 2;
+        	double windowY = stage.getY() - 25 + stage.getHeight() / 2;
+
+        	// Afficher le tooltip au centre de la fenêtre
+        	lastNameTooltip.show(lastNameField, windowX, windowY);
+
+        	 // Créer une transition de pause de 5 secondes
+            PauseTransition pause = new PauseTransition(Duration.seconds(3));
+            pause.setOnFinished(event -> lastNameTooltip.hide()); // Masquer le tooltip après la pause
+            pause.play();
+            isValid = false;
+        }else
+
+        if (emailField.getText().isEmpty()) {
+        	emailTooltip.setAutoHide(true);
+        	
+        	// Obtention de la position du centre de la fenêtre
+        	Stage stage = (Stage) main_form.getScene().getWindow();
+        	double windowX = stage.getX() - 25 + stage.getWidth() / 2;
+        	double windowY = stage.getY() - 25 + stage.getHeight() / 2;
+
+        	// Afficher le tooltip au centre de la fenêtre
+        	emailTooltip.show(emailField, windowX, windowY);
+
+        	 // Créer une transition de pause de 5 secondes
+            PauseTransition pause = new PauseTransition(Duration.seconds(3));
+            pause.setOnFinished(event -> emailTooltip.hide()); // Masquer le tooltip après la pause
+            pause.play();
+            isValid = false;
+        }else
+
+        if (numberField.getText().isEmpty()) {
+        	numberTooltip.setAutoHide(true);
+        	
+        	// Obtention de la position du centre de la fenêtre
+        	Stage stage = (Stage) main_form.getScene().getWindow();
+        	double windowX = stage.getX() - 25 + stage.getWidth() / 2;
+        	double windowY = stage.getY() - 25 + stage.getHeight() / 2;
+
+        	// Afficher le tooltip au centre de la fenêtre
+        	numberTooltip.show(numberField, windowX, windowY);
+
+        	 // Créer une transition de pause de 5 secondes
+            PauseTransition pause = new PauseTransition(Duration.seconds(3));
+            pause.setOnFinished(event -> numberTooltip.hide()); // Masquer le tooltip après la pause
+            pause.play();
+            isValid = false;
+        }
+
+        // Ajouter l'utilisateur seulement si tous les champs sont remplis
+        if (isValid) {
+            addUser(firstNameField.getText(), lastNameField.getText(), emailField.getText(), numberField.getText());
+        }
+    }
+    
+
+    // Méthode pour ajouter un utilisateur à la base de données
+    private void addUser(String firstName, String lastName, String email, String number) {
+
+    	try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
+    		String sql = "INSERT INTO Users (FirstName, LastName, Email, Number) VALUES (?, ?, ?, ?)";
+    		PreparedStatement statement = connection.prepareStatement(sql);
+    		statement.setString(1, firstName);
+    		statement.setString(2, lastName);
+    		statement.setString(3, email);
+    		statement.setString(4, number);
+    		statement.executeUpdate();
+    	} catch (SQLException e) {
+    		e.printStackTrace();
+    	}
+    }
     
     public void initialize() {
     	
@@ -82,21 +215,27 @@ public class Controller {
           
           Alert alert;
           
-          if(username.getText().isEmpty() || password.getText().isEmpty()){
-              alert = new Alert(AlertType.ERROR);
-              alert.setTitle("Error Message");
-              alert.setHeaderText(null);
-              alert.setContentText("Please fill all blank fields");
-              alert.showAndWait();
+          if(username.getText().isEmpty()){
+        	  success.setAutoHide(true);
+          	
+          		// Obtention de la position du centre de la fenêtre
+          		Stage stage = (Stage) main_form.getScene().getWindow();
+          		double windowX = stage.getX() - 25 + stage.getWidth() / 2;
+          		double windowY = stage.getY() - 25 + stage.getHeight() / 2;
+
+          		// Afficher le tooltip au centre de la fenêtre
+          		success	.show(username, windowX, windowY);
+
+          		// Créer une transition de pause de 5 secondes
+          		PauseTransition pause = new PauseTransition(Duration.seconds(3));
+          		pause.setOnFinished(event -> success.hide()); // Masquer le tooltip après la pause;
+                username.setText("");
+                password.setText("");
+          		pause.play();
           }else{
               if(isValidAdmin(usernameS, passwordS)){
-                  GetData.username = username.getText();
-                  
-                  alert = new Alert(AlertType.INFORMATION);
-                  alert.setTitle("Information Message");
-                  alert.setHeaderText(null);
-                  alert.setContentText("Successfully Login");
-                  alert.showAndWait();
+            	  
+            	  GetData.username = username.getText();
                   
                   loginBtn.getScene().getWindow().hide();
                   StackPane root = (StackPane)FXMLLoader.load(getClass().getResource("/Admin/Sample.fxml"));
@@ -118,11 +257,21 @@ public class Controller {
                   stage.show();
                   
               }else{
-                  alert = new Alert(AlertType.ERROR);
-                  alert.setTitle("Error Message");
-                  alert.setHeaderText(null);
-                  alert.setContentText("Wrong Username/Password");
-                  alert.showAndWait();
+            	  	wrong.setAutoHide(true);
+                	
+            		// Obtention de la position du centre de la fenêtre
+            		Stage stage = (Stage) main_form.getScene().getWindow();
+            		double windowX = stage.getX() - 25 + stage.getWidth() / 2;
+            		double windowY = stage.getY() - 25 + stage.getHeight() / 2;
+
+            		// Afficher le tooltip au centre de la fenêtre
+            		wrong.show(username, windowX, windowY);
+            		// Créer une transition de pause de 5 secondes
+            	  PauseTransition pause = new PauseTransition(Duration.seconds(3));
+            	  pause.setOnFinished(event -> wrong.hide()); // Masquer le tooltip après la pause;
+                  username.setText("");
+                  password.setText("");
+                  pause.play();
               }
           }
           
