@@ -25,15 +25,15 @@
                               <Font name="Tahoma Bold" size="17.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="username" focusTraversable="false" prefHeight="30.0" prefWidth="220.0" promptText="First Name" styleClass="textfield" stylesheets="@Design2.css" />
-                        <TextField fx:id="username11" focusTraversable="false" prefHeight="30.0" prefWidth="220.0" promptText="Last Name" styleClass="textfield" stylesheets="@Design2.css">
+                        <TextField fx:id="firstNameField" focusTraversable="false" prefHeight="30.0" prefWidth="220.0" promptText="First Name" styleClass="textfield" stylesheets="@Design2.css" />
+                        <TextField fx:id="lastNameField" focusTraversable="false" prefHeight="30.0" prefWidth="220.0" promptText="Last Name" styleClass="textfield" stylesheets="@Design2.css">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
                         </TextField>
-                        <TextField fx:id="username1" focusTraversable="false" prefHeight="30.0" prefWidth="220.0" promptText="E-mail" styleClass="textfield" stylesheets="@Design2.css" />
-                        <TextField fx:id="username12" focusTraversable="false" prefHeight="30.0" prefWidth="220.0" promptText="Number" styleClass="textfield" stylesheets="@Design2.css" />
-                        <Button fx:id="loginBtn" mnemonicParsing="false" onAction="#loginAdmin" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" stylesheets="@Design2.css" text="Quiz" />
+                        <TextField fx:id="emailField" focusTraversable="false" prefHeight="30.0" prefWidth="220.0" promptText="E-mail" styleClass="textfield" stylesheets="@Design2.css" />
+                        <TextField fx:id="numberField" focusTraversable="false" prefHeight="30.0" prefWidth="220.0" promptText="Number" styleClass="textfield" stylesheets="@Design2.css" />
+                        <Button fx:id="quiz" mnemonicParsing="false" onAction="#handle" prefHeight="40.0" prefWidth="220.0" styleClass="login-btn" stylesheets="@Design2.css" text="Quiz" />
                      </children>
                      <padding>
                         <Insets left="20.0" right="20.0" />

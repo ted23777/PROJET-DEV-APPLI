@@ -66,6 +66,11 @@
                         <Image url="@../resources/fond1.png" />
                      </image>
                   </ImageView>
+                  <ImageView fx:id="loadingImageView" fitHeight="24.0" fitWidth="24.0" layoutX="138.0" layoutY="296.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../resources/icons8-rhombus-loader.gif" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
          </children>
