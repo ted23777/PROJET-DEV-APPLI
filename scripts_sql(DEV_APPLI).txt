@@ -1,0 +1,133 @@
+CREATE TABLE IF NOT EXISTS Gerant(
+   id_service VARCHAR(50),
+   Nom VARCHAR(50),
+ --  Role VARCHAR(50) NOT NULL,
+   PRIMARY KEY(id_service)
+);
+
+CREATE TABLE IF NOT EXISTS Quizz(
+   id_quizz VARCHAR(50),
+   Niveau_Difficulté VARCHAR(50) NOT NULL,
+   Thème VARCHAR(50) NOT NULL,
+   code_seance VARCHAR(50) NOT NULL,
+   id_service VARCHAR(50) NOT NULL,
+   PRIMARY KEY(id_quizz),
+   FOREIGN KEY(id_service) REFERENCES Gerant(id_service)
+);
+
+CREATE TABLE IF NOT EXISTS Utilisateur(
+   id_user VARCHAR(50),
+   Nom VARCHAR(50) NOT NULL,
+   Prenom VARCHAR(50) NOT NULL,
+   --Type_joueur VARCHAR(50) NOT NULL ,
+   PRIMARY KEY(id_user)
+);
+
+CREATE TABLE IF NOT EXISTS Question(
+   id_question VARCHAR(50),
+   Reponses VARCHAR(50) NOT NULL,
+  -- Illustration  NOT NULL,
+   true_false BOOLEAN NOT NULL,
+   Libellé VARCHAR(50) NOT NULL,
+   PRIMARY KEY(id_question),
+   UNIQUE(Reponses),
+   UNIQUE(Libellé)
+);
+
+CREATE TABLE IF NOT EXISTS Parcours(
+   id_niveau VARCHAR(50),
+   num_niv INTEGER NOT NULL,
+   PRIMARY KEY(id_niveau)
+);
+
+CREATE TABLE IF NOT EXISTS Thème(
+   id_theme VARCHAR(50),
+   libelle VARCHAR(50) NOT NULL,
+   PRIMARY KEY(id_theme)
+);
+
+CREATE TABLE IF NOT EXISTS Seance(
+   num_seance SERIAL,
+   Pers_autorisee VARCHAR(50) NOT NULL,
+   code_quest VARCHAR(50) NOT NULL,
+   liste_pc VARCHAR(50) NOT NULL,
+   PRIMARY KEY(num_seance)
+);
+
+CREATE TABLE IF NOT EXISTS PC(
+   num_pc SERIAL,
+   code_d_acces VARCHAR(50) NOT NULL,
+   PRIMARY KEY(num_pc)
+);
+
+CREATE TABLE IF NOT EXISTS Jouer(
+   id_quizz VARCHAR(50),
+   id_user VARCHAR(50),
+   PRIMARY KEY(id_quizz, id_user),
+   FOREIGN KEY(id_quizz) REFERENCES Quizz(id_quizz),
+   FOREIGN KEY(id_user) REFERENCES Utilisateur(id_user)
+);
+
+CREATE TABLE IF NOT EXISTS Charger_de(
+   id_quizz VARCHAR(50),
+   id_question VARCHAR(50),
+   PRIMARY KEY(id_quizz, id_question),
+   FOREIGN KEY(id_quizz) REFERENCES Quizz(id_quizz),
+   FOREIGN KEY(id_question) REFERENCES Question(id_question)
+);
+
+CREATE TABLE IF NOT EXISTS Appartenir(
+   id_quizz VARCHAR(50),
+   id_niveau VARCHAR(50),
+   PRIMARY KEY(id_quizz, id_niveau),
+   FOREIGN KEY(id_quizz) REFERENCES Quizz(id_quizz),
+   FOREIGN KEY(id_niveau) REFERENCES Parcours(id_niveau)
+);
+
+CREATE TABLE IF NOT EXISTS Provenir(
+   id_quizz VARCHAR(50),
+   id_theme VARCHAR(50),
+   PRIMARY KEY(id_quizz, id_theme),
+   FOREIGN KEY(id_quizz) REFERENCES Quizz(id_quizz),
+   FOREIGN KEY(id_theme) REFERENCES Thème(id_theme)
+);
+
+CREATE TABLE IF NOT EXISTS Se_situer(
+   id_niveau VARCHAR(50),
+   num_seance INTEGER,
+   PRIMARY KEY(id_niveau, num_seance),
+   FOREIGN KEY(id_niveau) REFERENCES Parcours(id_niveau),
+   FOREIGN KEY(num_seance) REFERENCES Seance(num_seance)
+);
+
+CREATE TABLE IF NOT EXISTS Intervenir(
+   id_quizz VARCHAR(50),
+   num_seance INTEGER,
+   PRIMARY KEY(id_quizz, num_seance),
+   FOREIGN KEY(id_quizz) REFERENCES Quizz(id_quizz),
+   FOREIGN KEY(num_seance) REFERENCES Seance(num_seance)
+);
+
+CREATE TABLE IF NOT EXISTS Reuni(
+   num_seance INTEGER,
+   num_pc INTEGER,
+   PRIMARY KEY(num_seance, num_pc),
+   FOREIGN KEY(num_seance) REFERENCES Seance(num_seance),
+   FOREIGN KEY(num_pc) REFERENCES PC(num_pc)
+);
+
+CREATE TABLE IF NOT EXISTS Progrrammer(
+   id_service VARCHAR(50),
+   num_pc INTEGER,
+   PRIMARY KEY(id_service, num_pc),
+   FOREIGN KEY(id_service) REFERENCES Gerant(id_service),
+   FOREIGN KEY(num_pc) REFERENCES PC(num_pc)
+);
+
+CREATE TABLE IF NOT EXISTS Coordoner(
+   id_service VARCHAR(50),
+   num_seance INTEGER,
+   PRIMARY KEY(id_service, num_seance),
+   FOREIGN KEY(id_service) REFERENCES Gerant(id_service),
+   FOREIGN KEY(num_seance) REFERENCES Seance(num_seance)
+);
